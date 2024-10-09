@@ -1,29 +1,20 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using FirstNetworkWpf.ViewModels;
 
-namespace FirstNetworkWpf;
+namespace FirstNetworkWpf.Windows;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
 public partial class MainWindow : Window
 {
+    private AppViewModel _appViewModel;
+
     public MainWindow() {
         InitializeComponent();
 
         // привязка данных окна к классу ApplicationViewModel 
         // реализация связи между View и ViewModel
-        _applicationViewModel = new ApplicationViewModel(
-            new DefaultDialogService(), // реализация диалогов
-            new JsonFileService()       // реализация работы с файлами
-        );
-        DataContext = _applicationViewModel;
-    }
-}
+        _appViewModel = new AppViewModel(this);
+        DataContext = _appViewModel;
+    } // MainWindow
+} // class MainWindow
