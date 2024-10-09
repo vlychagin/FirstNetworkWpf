@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows;
 using System.Runtime.CompilerServices;
 using FirstNetworkWpf.Infrastructure;
 using FirstNetworkWpf.Windows;
@@ -13,9 +14,14 @@ public partial class AppViewModel: INotifyPropertyChanged
     // Скачать файл при помощи WebClient
     public RelayCommand DownloadByWebClientCommand { get; set; }
 
+    // Скачать файл при помощи WebRequest и распарсить по заданию
+    public RelayCommand DownloadByWebRequestCommand { get; set; }
+
     // О приложении
+    public RelayCommand AboutCommand { get; set; }
 
     // Выход
+    public RelayCommand ExitCommand { get; set; }
 
     #endregion
 
@@ -23,6 +29,12 @@ public partial class AppViewModel: INotifyPropertyChanged
         HostWindow = hostWindow;
 
         DownloadByWebClientCommand = new(DownloadByWebClientExec);
+        DownloadByWebRequestCommand = new(DownloadByWebRequestExec);
+
+        // Показать окно сведений о программе
+        AboutCommand = new(o => { });
+
+        ExitCommand = new(o => Application.Current.Shutdown(0));
     } // AppViewModel
 
     #region реализация интерфейса INotifyPropertyChanged
