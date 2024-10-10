@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Runtime.CompilerServices;
 using FirstNetworkWpf.Infrastructure;
+using FirstNetworkWpf.Models;
 using FirstNetworkWpf.Windows;
 
 namespace FirstNetworkWpf.ViewModels;
@@ -10,12 +11,18 @@ public partial class AppViewModel: INotifyPropertyChanged
 {
     public MainWindow HostWindow { get; set; }
 
+    // коллекция курсов валют ЦРБ
+    public List<Valute> Valutes { get; set; } = new();
+
     #region команды
     // Скачать файл при помощи WebClient
     public RelayCommand DownloadByWebClientCommand { get; set; }
 
     // Скачать файл при помощи WebRequest и распарсить по заданию
     public RelayCommand DownloadByWebRequestCommand { get; set; }
+
+    // Скачать курс валют с сайта ЦРБ
+    public RelayCommand DownloadValutesCommand { get; set; }
 
     // О приложении
     public RelayCommand AboutCommand { get; set; }
@@ -30,6 +37,9 @@ public partial class AppViewModel: INotifyPropertyChanged
 
         DownloadByWebClientCommand = new(DownloadByWebClientExec);
         DownloadByWebRequestCommand = new(DownloadByWebRequestExec);
+
+        // Скачать курс валют с сайта ЦРБ
+        DownloadValutesCommand = new(DownloadValutesExec);
 
         // Показать окно сведений о программе
         AboutCommand = new(o => { });

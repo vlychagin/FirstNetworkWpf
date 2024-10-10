@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition Height="36"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="32"/>
         </Grid.RowDefinitions>
         
@@ -139,7 +139,7 @@
             <!-- Вывод 2й задачи -->
             <TabItem BorderThickness="1">
                 <TabItem.Header>
-                    <TextBlock Name="TblQTask2Header"
+                    <TextBlock Name="TblTask2Header"
                                FontFamily="Verdana"
                                FontSize="14">
                         Задача 2
@@ -148,7 +148,8 @@
                 <DataGrid Name="DtgValutes"
                           Margin="5" 
                           FontFamily="Verdana"
-                          FontSize="16">
+                          FontSize="16"
+                          BorderThickness="0.8">
                 </DataGrid>
             </TabItem>
 
